@@ -46,10 +46,12 @@ while True:
             total_exp+=te['amount']
             
         print("total exp is ", total_exp)
+
     elif(choice == 4):
         #exit
         print("exiting...")
         time.sleep(2)
         break
+    
     else:
         print("Invalid")
