@@ -14,7 +14,7 @@ def get_by_id(id : int):
     
     return {"ID": data[0], "Title" :data[1], "Desc": data[2]}
 
-#read
+# read
 @app.get("/getall")
 def get_all():
     db.cur.execute("SELECT * FROM notes")
@@ -28,7 +28,7 @@ def get_all():
         
     return result
 
-# add notes
+# create
 @app.post("/add_notes/")
 def post_add_notes(task : str, desc : str):
     db.cur.execute("INSERT INTO notes (task, description) VALUES(%s,%s)", (task,desc))
