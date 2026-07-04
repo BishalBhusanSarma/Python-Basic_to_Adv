@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 
-Base_url = "http://127.0.0.1:8000/"
+Base_url = "https://task-api-3x27.onrender.com"
 
 
 st.title("Task App")
