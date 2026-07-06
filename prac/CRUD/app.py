@@ -33,15 +33,36 @@ with st.container(border=True):
 
 
 
+    # to search tasks 
+    st.header("Search Task")
+    with st.container(border=True):
+        s_id = st.text_input("Input id", key="s_inp")
+        if st.button("Search task", key="s_btn"):
+            response_s = requests.get(f"{Base_url}/by_task_id/{s_id}").json()
+            if "message" in response_s:
+                st.write(response_s["message"])
+            else:
+                st.write(f"ID is: {response_s[0]}")
+                st.write(f"Task is: {response_s[1]}")
+                st.write(f"status is Completed?: {"Yes" if response_s[2]==1 else "No"}")
+            
+
+
+
+
+    #+++++++++++++++++++++++++++++++++++
+
+
+
     # to edit tasks 
 
     st.header("Edit Task")
     with st.container(border=True):
 
-        u_id = st.text_input("Input id")
-        u_task = st.text_input("Enter updated task")
+        u_id = st.text_input("Input id", key="u_id")
+        u_task = st.text_input("Enter updated task", key="u_task")
         u_status = st.radio("Completed?", [0,1], format_func=lambda x: "Yes" if x==1 else "No", key="u_status")
-        if st.button("Update task"):
+        if st.button("Update task", key="u_btn"):
 
             data = {"task": u_task, "status":u_status}
             response = requests.put(f"{Base_url}/update/{u_id}", json=data)
